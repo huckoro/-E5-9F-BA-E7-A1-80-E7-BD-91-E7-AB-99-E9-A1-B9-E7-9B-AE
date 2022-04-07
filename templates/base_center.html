@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="text-center my-3">用户中心</h1>
+<div class="container d-flex justify-content-between">
+  <div class="col-3">
+    <div class="d-flex flex-column text-center">
+      <a href="/user" {% block user_center_1 %}{% endblock user_center_1 %}>个人中心</a>
+      <a href="/user/address" {% block user_center_2 %}{% endblock user_center_2 %}>地址信息</a>
+      <a href="/user/order" {% block user_center_3 %}{% endblock user_center_3 %}>我的订单</a>
+    </div>
+  </div>
+  <div class="col-9">
+    {% block center_content %}{% endblock center_content %}
+  </div>
+</div>
+{% endblock content %}

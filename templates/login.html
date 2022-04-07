@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block titlename %}
+登陆
+{% endblock titlename %}
+
+{% block content %}
+<h1 class="text-center mt-3">用户登陆</h1>
+<div class="container d-flex justify-content-center mt-5">
+  <div class="col-5">
+    <form method="post" class="d-flex flex-column login">
+      <label for="username">账户/邮箱:</label>
+      <input type="text" name="username" id="username" placeholder="邮箱">
+      <label for="pwd">密码:</label>
+      <input type="password" name="password" id="pwd">
+      <label for="vcode">验证码:</label>
+      <div class="d-flex">
+        <img src="/verifycode" alt="验证码">
+        <input type="text" name="vcode" class="mx-3">
+      </div>
+      <div class="d-flex">
+        <input type="checkbox" name="remember" class="mx-3 remember_check">
+        <span>记住用户名</span>
+      </div>
+
+      <input type="submit" value="登陆">
+    </form>
+  </div>
+</div>
+{% endblock content %}

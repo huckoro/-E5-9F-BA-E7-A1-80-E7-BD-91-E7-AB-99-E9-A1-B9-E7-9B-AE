@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block titlename %}注册{% endblock titlename %}
+
+{% block topfile %}
+<style media="screen">
+  #protocol{
+    align-items: center;
+    height: 24px;
+  }
+</style>
+{% endblock topfile %}
+
+{% block content %}
+<h1 class="text-center mt-3">用户注册</h1>
+<div class="container d-flex justify-content-center mt-5">
+  <div class="col-5">
+    <form method="post" class="d-flex flex-column register">
+      <label for="username">账户/邮箱:</label>
+      <input type="text" name="username" id="username" placeholder="邮箱">
+      <label for="pwd">密码:</label>
+      <input type="password" name="password" id="pwd">
+      <div class="d-flex">
+        <input type="checkbox" name="protocol" id="protocol" class="mx-3">
+        <label for="protocol">请同意协议!</label>
+      </div>
+      <input type="submit" value="登陆">
+    </form>
+  </div>
+</div>
+{% endblock content %}
+
+{% block endfile %}
+<script type="text/javascript">
+$(function(){
+  var ErrorName = true;
+  var ErrorPassword = true;
+  var ErrorProtocol = true;
+
+  $('.register').submit(function(){
+    check_username();
+    check_pwd();
+    check_protocol();
+
+    if(ErrorName == false && ErrorPassword == false && ErrorProtocol == false){
+      return true;
+    }else{
+      return false;
+    }
+  });
+
+  function check_protocol(){
+    if ($('#protocol').prop('checked') == true){
+      ErrorProtocol = false
+    }else{
+      ErrorProtocol = true;
+      alert('请同意协议')
+    }
+  }
+
+  function check_username(){
+    var name = $('#username').val();
+    var userPattern = /^[A-Za-z0-9][A-Za-z0-9_\-\.]*\@[A-Za-z0-9_\-\.]+\.[A-Za-z]{2,4}$/;
+
+    if (name == ''){
+      ErrorName = true
+      alert('用户名不能为空！')
+      return;
+    }
+    if (userPattern.test(name)){
+      ErrorName = false;
+    }else{
+      ErrorName = true;
+      alert('邮箱错误')
+      return;
+    }
+
+  };
+
+  function check_pwd() {
+    var pwdVal = $('#pwd')
+    var passwordPattern = /^.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*? ]).*$/;
+
+    if (pwdVal == ''){
+      ErrorPassword = true;
+      alert('密码不能为空')
+      return;
+    }
+
+    if (passwordPattern.test(pwdVal)){
+      ErrorPassword = false;
+    }else{
+      ErrorPassword = true;
+      alert('密码最少6位，包括至少1个小写字母，1个数字，1个特殊字符')
+      return;
+    }
+  };
+})
+
+</script>
+
+{% endblock endfile %

@@ -1,0 +1,8 @@
+.remember_check{
+  -ms-align-items: center;
+  align-items: center;
+  height: 24px;
+}
+.d-active{
+  background-color: lightblue;
+}

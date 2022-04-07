@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/default.css">
+  <script type="text/javascript" src="./js/jquery-1.12.4.min.js"></script>
+  <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+</head>
+<body>
+  <h1 class="text-center my-3">用户中心</h1>
+  <div class="container d-flex justify-content-between">
+    <div class="col-3">
+      <div class="d-flex flex-column text-center">
+          <a href="/user" class="d-active">个人中心</a>
+          <a href="/user/">xxx</a>
+          <a href="#">我的订单</a>
+      </div>
+    </div>
+    <div class="col-9">
+      <div class="container">
+        <h2>个人信息</h2>
+        <div class="d-flex flex-column">
+          <p>用户名(昵称):&nbsp;<input type="text" value="{{ user.nick_name }}" class="border-0"></p>
+          <p>UID:&nbsp;{{ user.id + 1000 }}</p>
+          <p>邮箱:&nbsp;<span>{{ user.username }}</span></p>
+          {% if address %}
+          <p>联系方式:&nbsp;<span>{{ address.phone }}</span></p>
+          <p>默认地址:&nbsp;<span>{{ address.addr }}</span></p>
+          {% else %}
+          <p>联系方式:&nbsp;<span>未设置</span></p>
+          <p>默认地址:&nbsp;<span>未设置</span></p>
+          {% endif %}
+        </div>
+
+        <h2>历史浏览</h2>
+        <div class="row">
+            <div class="col">
+              <div class="d-flex flex-column">
+                <img src="image/test.png" alt="" class="w-100">
+                <span>商品名称{{}}</span>
+                <div class="d-flex justify-content-around">
+                  <span>00.00¥</span>
+                  <span>00.00/500g</span>
+                  <a href="#"><span style="font-size:1.5rem;line-height:1rem">+</span></a>
+                </div>
+              </div>
+
+
+
+            </div>
+            <div class="col">2</div>
+            <div class="col">3</div>
+            <div class="col">4</div>
+            <div class="col">5</div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>
